@@ -7,10 +7,22 @@ Hands Drone Project
 
 # settings on PC(Linux OS)
 // Gazebo와 함께 PX4 AutoPilot실행
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+cd PX4-Autopilot/
+bash ./Tools/setup/ubuntu.sh
+./Tools/setup/ubuntu.sh --no-nuttx
+./Tools/setup/ubuntu.sh --no-sim-tools
+chmod +x ~/Downloads/gazebo.sh
+gnome-terminal --working-directory="~" -e "./Downloads/gazebo.sh"
+
 sudo apt-get install libboost-all-dev
 sudo apt-get autoremove
 sudo apt-get install libgazebo-dev
 sudo apt install protobuf-compiler
+
+cd PX4-Autopilot/
+make px4_sitl gazebo
+make px4_sitl list_vmd_make_targets
 
 on Hompage Download Gazebo script
 
