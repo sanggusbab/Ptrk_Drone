@@ -6,13 +6,13 @@ git pull origin main
 Hands Drone Project
 
 # settings on PC(Linux OS)
-// Toolchain 설치
-git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
-
 // Gazebo와 함께 PX4 AutoPilot실행
-cd ./PX4-Autopilot
-make px4_sitl gazebo
+sudo apt-get install libboost-all-dev
+sudo apt-get autoremove
+sudo apt-get install libgazebo-dev
+sudo apt install protobuf-compiler
+
+on Hompage Download Gazebo script
 
 # settings on raspi
 pkg-config --modversion opencv4
