@@ -1,31 +1,74 @@
+### Ptrk_Drone-Project
+Hands Person Tracking Drone Project
+
 # After RaspberryPi ssh Connect
-cd Ptrk_Drone
+htop
+slurm -i enp0s3
+python3 ~/Desktop/Ptrk_Drone/Rasp/Temp.py
+cd ~/Desktop/Ptrk_Drone
 git pull origin main
 
-# Ptrk_Drone
-Hands Drone Project
-
 # settings on PC(Linux OS)
-// Gazebo와 함께 PX4 AutoPilot실행
+sudo apt install htop
+
+cd ~/Downloads
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+
+sudo apt-get install python3-pip -y
+pip3 install --user future
+sudo apt-get install python3-tk -y
+sudo apt-get install git -y
+sudo apt install vim
+sudo apt-get install libjpeg-dev zlib1g-dev
+cd ~/Downloads
+git clone https://github.com/mavlink/mavlink.git --recursive
+gedit ~/.bashrc
+// export PYTHONPATH=/home/sanggu/Downloads/mavlink
+echo $PYTHONPATH
+python3 -m pymavlink.tools.mavgen --lang=Java --wire-protocol=2.0 --no-validate --output=/home/sanggu/Downloads/mavlink/out /home/sanggu/Downloads/mavlink/message_definitions/v1.0/test.xml
+cd ~/Desktop
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-cd PX4-Autopilot/
-bash ./Tools/setup/ubuntu.sh
-./Tools/setup/ubuntu.sh --no-nuttx
-./Tools/setup/ubuntu.sh --no-sim-tools
-chmod +x ~/Downloads/gazebo.sh
-gnome-terminal --working-directory="~" -e "./Downloads/gazebo.sh"
+vim ~/Desktop/PX4-Autopilot/Tools/setup/requirements.txt
+// sympy>=1.10.1 -->> sympy>=1.9
+bash ~/Desktop/PX4-Autopilot/Tools/setup/ubuntu.sh
+sudo apt update
+sudo apt upgrade -y
+~/Desktop/PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx
+~/Desktop/PX4-Autopilot/Tools/setup/ubuntu.sh --no-sim-tools
+cd ~/Desktop/PX4-Autopilot/
+make px4_sitl gazebo ********************************************************
+// commander takeoff
+// commander land
+sudo usermod -a -G dialout $USER
+sudo apt-get remove modemmanager -y
+sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav -y
+sudo apt install libqt5gui5 -y
+sudo apt install libfuse2 -y
+//download QGroundControl.AppImage
+cd ~/Downloads
+chmod +x ./QGroundControl.AppImage
+~/Downloads/QGroundControl.AppImage ********************************************************
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt autoremove -y
+sudo reboot
 
-sudo apt-get install libboost-all-dev
-sudo apt-get autoremove
-sudo apt-get install libgazebo-dev
-sudo apt install protobuf-compiler
-
-cd PX4-Autopilot/
+cd ~/PX4-Autopilot/
+// gstreaming
+gst-launch-1.0 -v udpsrc port=5600 caps='application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264' \! rtph264depay ! avdec_h264 ! videoconvert ! autovideosink fps-update-interval=1000 sync=false
+gazebo --verbose
+export VERBOSE_SIM=1
 make px4_sitl gazebo
-make px4_sitl list_vmd_make_targets
 
-on Hompage Download Gazebo script
-
+// param
+param set NAV_RCL_ACT 0
+param set NAV_DLL_ACT 0
+param set SIM_BAT_MIN_PCT 10
+param set SYS_FAILURE_EN 1
+// on pxh
+set SYS_FAILURE_EN 1
+failure gps off
 # settings on raspi
 pkg-config --modversion opencv4
 
@@ -55,13 +98,10 @@ sudo apt-get install liblapack-dev libeigen3-dev gfortran
 sudo apt-get install libhdf5-dev protobuf-compiler
 sudo apt-get install libprotobuf-dev libgoogle-glog-dev libgflags-dev
 sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
-
 sudo sh -c "echo '/usr/local/cuda/lib64' >> /etc/ld.so.conf.d/nvdia-tegra.conf"
 sudo ldconfig
-
 sudo apt -y install gcc-8 g++-8
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 8 --slave /usr/bin/g++ g++ /usr/bin/g++-8
-
 sudo apt install libatlas-base-dev liblapacke-dev gfortran
 sudo apt install libhdf5-dev libhdf5-103
 sudo apt install libjpeg-dev libtiff5-dev libjasper-dev libpng-dev
