@@ -69,6 +69,44 @@ param set SYS_FAILURE_EN 1
 // on pxh
 set SYS_FAILURE_EN 1
 failure gps off
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// ROS2
+locale
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+locale
+sudo apt update && sudo apt install curl gnupg2 lsb-release -y
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+sudo sed -i -e 's/ubuntu .* main/ubuntu focal main/g' /etc/apt/sources.list.d/ros2.list
+sudo apt update
+sudo apt install ros-foxy-desktop
+source /opt/ros/foxy/setup.bash
+source /opt/ros/foxy/setup.bash
+ros2 run demo_nodes_cpp talker
+source /opt/ros/foxy/setup.bash
+ros2 run demo_nodes_py listener
+vi .bashrc
+source /opt/ros/foxy/setup.bash
+ros2 run turtlesim turtlesim_node
+ros2 run turtlesim turtle_teleop_key
+ros2 node list
+ros2 topic list
+ros2 service list
+ros2 action list
+rqt graph
+sudo apt update
+sudo apt install ~nros-foxy-rqt*
+rqt
+sudo apt install ros-foxy-turtle-tf2-py ros-foxy-tf2-tools
+pip3 install transforms3d
+source /opt/ros/foxy/setup.bash
+ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py
+ros2 run turtlesim turtle_teleop_key
+rviz2
+
 # settings on raspi
 pkg-config --modversion opencv4
 
