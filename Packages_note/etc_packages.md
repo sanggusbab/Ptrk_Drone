@@ -1,10 +1,21 @@
-****************** On Companion ******************
+****************** The Basic Env ******************
+sudo apt-get install python3-pip
+pip3 install --user future
+sudo apt-get install python-tk
+cd ~/Downloads
+git clone https://github.com/mavlink/mavlink.git
+git submodule update --init --recursive
+PYTHONPATH=/home/pi/Downloads/mavlink
+export PYTHONPATH
+python -m mavgenerate
+
 locale
 sudo apt update && sudo apt install locales
 sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 locale
+
 sudo apt install software-properties-common
 sudo add-apt-repository universe
 sudo apt update && sudo apt install curl
