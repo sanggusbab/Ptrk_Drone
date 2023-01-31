@@ -1,3 +1,6 @@
+// gcc hello_server.c -o hserver
+// ./hserver 9190
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
