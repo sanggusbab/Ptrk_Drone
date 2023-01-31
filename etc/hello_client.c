@@ -20,8 +20,7 @@ int main(int argc, char* argv[])
     int strLen;
     if(argc!=3)
     {
-        .vscode
-            printf("Usage : %s <IP> <port>\n", argv[0]);
+        printf("Usage : %s <IP> <port>\n", argv[0]);
         exit(1);
     }
 
