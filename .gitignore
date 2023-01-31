@@ -1,4 +1,4 @@
 *.xlsx
 *.tlog
 *.raw
-.vscode/*
+.vscode/
