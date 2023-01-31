@@ -1,0 +1,59 @@
+{
+    "person": [{
+        "personId": 0,
+        "x-axis" : "10px",
+        "y-axis" : "10px",
+        "selected" : 0,
+        "width" : "10px",
+        "height": "10px"
+    },
+    {
+        "personId": 1,
+        "x-axis": "10px",
+        "y-axis": "10px",
+        "selected": 0,
+        "width": "10px",
+        "height": "10px"
+    },
+    {
+        "personId": 2,
+        "x-axis": "10px",
+        "y-axis": "10px",
+        "selected": 0,
+        "width": "10px",
+        "height": "10px"
+    },
+    {
+        "personId": 3,
+        "x-axis": "10px",
+        "y-axis": "10px",
+        "selected": 0,
+        "width": "10px",
+        "height": "10px"
+    },
+    {
+        "personId": 4,
+        "x-axis": "10px",
+        "y-axis": "10px",
+        "selected": 0,
+        "width": "10px",
+        "height": "10px"
+    },
+    {
+        "personId": 5,
+        "x-axis": "10px",
+        "y-axis": "10px",
+        "selected": 0,
+        "width": "10px",
+        "height": "10px"
+    },
+    {
+        "personId": 6,
+        "x-axis": "10px",
+        "y-axis": "10px",
+        "selected": 0,
+        "width": "10px",
+        "height": "10px"
+    }
+]
+}

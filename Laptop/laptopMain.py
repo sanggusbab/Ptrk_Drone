@@ -60,8 +60,8 @@ def LaptopMain():
                         screenHeight = 1080
                         screen = pygame.display.set_mode((screenWidth, screenHeight))
                         # background
-                        background = pygame.image.load(r"C:\Users\sangg\OneDrive\LSM_ADMIN_Desktop\SM_Project\Ptrk_Drone\Laptop\Resource\background.jpg")
-                        rect1 = pygame.image.load(r"C:\Users\sangg\OneDrive\LSM_ADMIN_Desktop\SM_Project\Ptrk_Drone\Laptop\Resource\rect.png")
+                        background = pygame.image.load(r".\Laptop\Resource\background.jpg")
+                        rect1 = pygame.image.load(r".\Laptop\Resource\rect.png")
                         rect1Size = rect1.get_rect().size
                         rect1Width = rect1Size[0]
                         rect1Height = rect1Size[1]
